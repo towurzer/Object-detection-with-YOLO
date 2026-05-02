@@ -10,7 +10,6 @@ def main(pre_training_inference, perform_training, post_training_inference, eval
 	print("Loaded config, created directories")
 
 	if pre_training_inference or perform_training or post_training_inference:
-		# TODO: get Dataloader
 		dataloader = dataset.get_dataloader(config)  # download the dataset, crate and return the dataloader
 
 	if pre_training_inference:
