@@ -1,7 +1,7 @@
 from roboflow import Roboflow
 import os
 
-# Your API key
+# API key
 api_key = os.environ.get('ROBOFLOW_API_KEY')
 if not api_key:
     print("Please set ROBOFLOW_API_KEY environment variable")
@@ -9,14 +9,13 @@ if not api_key:
 
 rf = Roboflow(Can9PbK69yyBXwMWG1OW)
 
-# You need to specify your workspace and project
-# Common workspaces: your username or organization name
+
 print("Available workspaces:", rf.workspaces())
 
-# Replace these with your actual values
-WORKSPACE = "your-workspace-name"  # <-- Needs to be set
-PROJECT_NAME = "your-project-name"  # <-- Needs to be set
-VERSION = 1  # or whatever version you're using
+
+WORKSPACE = "your-workspace-name"  
+PROJECT_NAME = "your-project-name"  
+VERSION = 1  
 
 try:
     workspace = rf.workspace(WORKSPACE)
@@ -27,7 +26,7 @@ try:
     version.download("yolov8", location="../dataset")
     print("Download complete!")
     
-    # Verify download
+    # to verify download
     import os
     if os.path.exists("../dataset/data.yaml"):
         print("✓ data.yaml found!")
