@@ -2,6 +2,8 @@ import sys
 from config import Config, CLIConfig
 import utils
 import dataset
+import inference
+
 
 def main(pre_training_inference, perform_training, post_training_inference, evaluate_results):
 	print("Starting ...")
@@ -13,8 +15,7 @@ def main(pre_training_inference, perform_training, post_training_inference, eval
 		dataloader = dataset.get_dataloader(config)  # download the dataset, crate and return the dataloader
 
 	if pre_training_inference:
-		# TODO: Run Inference
-		pass
+    		inference.run_pretrained_inference(config)
 
 	if perform_training:
 		# TODO: Train model
