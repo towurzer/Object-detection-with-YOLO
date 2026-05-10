@@ -22,8 +22,9 @@ def download_dataset(config):
         raise EnvironmentError(
             "ROBOFLOW_API_KEY environment variable not set.\n"
             "Get your free API key at: https://app.roboflow.com/settings/api\n"
-            "Then run: export ROBOFLOW_API_KEY='your_key_here'"
-        )
+            "Linux/macOS current session: export ROBOFLOW_API_KEY='your_key_here'\n"
+            "Windows PowerShell current session: $env:ROBOFLOW_API_KEY='your_key_here'\n"
+            )
 
     rf = Roboflow(api_key=api_key)
     project = rf.workspace("marketahranickova-seznam-cz").project("bee-object-vojzu")

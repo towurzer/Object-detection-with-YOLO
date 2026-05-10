@@ -1,10 +1,13 @@
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import List
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 @dataclass
 class Config:
     # Dataset settings
-    DATA_DIR: str = "./dataset"
+    DATA_DIR: str = str(PROJECT_ROOT / "dataset")
     NUM_CLASSES: int = 4
     IMAGES_PER_CLASS: int = 200
     DATA_URL: str = "https://data.caltech.edu/records/mzrjg-6wc02/files/caltech-101.zip"
@@ -15,12 +18,12 @@ class Config:
     MODEL_NAME: str = "yolo11n.pt"
     IMAGE_SIZE: int = 640
     NC: int = 3
-    MODEL_DIR: str = "../model"
+    MODEL_DIR: str = str(PROJECT_ROOT / "model")
     MODEL_FILE: str = "model.YOLO"
     CONF_THRESHOLD: float = 0.25
 
     # Paths
-    OUT_DIR: str = "./output"
+    OUT_DIR: str = str(PROJECT_ROOT / "output")
     DATA_FILE: str = "inference.data"
 
     # Plot settings

@@ -24,6 +24,25 @@ results/                    # Results to display in README
 ```
 
 ## Getting Started
+
+### Prerequisites: Set up Roboflow API Key
+
+This project downloads datasets from Roboflow. You need to set up the `ROBOFLOW_API_KEY` environment variable:
+
+**Windows PowerShell (current session only):**
+```powershell
+$env:ROBOFLOW_API_KEY="your_key_here"
+```
+
+Then restart your terminal.
+
+**Linux/macOS:**
+```bash
+export ROBOFLOW_API_KEY='your_key_here'
+```
+
+Get your free API key at: https://app.roboflow.com/settings/api
+
 ### 1. Installation
 
 Run
