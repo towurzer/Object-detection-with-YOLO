@@ -4,7 +4,7 @@ from typing import List
 @dataclass
 class Config:
     # Dataset settings
-    DATA_DIR: str = "../dataset"
+    DATA_DIR: str = "./dataset"
     NUM_CLASSES: int = 4
     IMAGES_PER_CLASS: int = 200
     DATA_URL: str = "https://data.caltech.edu/records/mzrjg-6wc02/files/caltech-101.zip"

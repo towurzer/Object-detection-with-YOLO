@@ -1,5 +1,7 @@
 import os
 from roboflow import Roboflow
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def download_dataset(config):
@@ -26,7 +28,7 @@ def download_dataset(config):
     rf = Roboflow(api_key=api_key)
     project = rf.workspace("marketahranickova-seznam-cz").project("bee-object-vojzu")
     version = project.version(1)
-    version.download("yolov8", location=config.DATA_DIR)
+    version.download("yolov8", location=config.DATA_DIR, overwrite=True)
 
     print(f"Dataset downloaded to: {config.DATA_DIR}")
 
