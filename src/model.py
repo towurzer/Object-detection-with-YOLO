@@ -2,9 +2,10 @@ import os
 from ultralytics import YOLO
 
 
-def load_pretrained_model(model_name: str):
+def load_pretrained_model(config):
     """Load a pretrained Ultralytics YOLO model by name or path."""
-    return YOLO(model_name)
+    path = os.path.join(config.MODEL_DIR, 'pre-trained', str(config.MODEL_NAME))
+    return YOLO(path)
 
 
 def load_trained_model(config):
@@ -19,7 +20,7 @@ def load_trained_model(config):
 
 def train_model(config, data_yaml: str):
     """Train the configured pretrained model on the given dataset."""
-    model = load_pretrained_model(config.MODEL_NAME)
+    model = load_pretrained_model(config)
 
     results = model.train(
         data=data_yaml,

@@ -40,7 +40,7 @@ if __name__ == '__main__':
 	do_post_training_inference = utils.has_flag(argv, cli_config.post_training_inference_flags)
 	do_results_evaluation = utils.has_flag(argv, cli_config.evaluate_flags)
 	do_pre_training_inference = do_pre_training_inference or utils.has_flag(argv, cli_config.inference_flags)
-	do_post_training_inference = do_pre_training_inference or utils.has_flag(argv, cli_config.inference_flags)
+	do_post_training_inference = do_post_training_inference or utils.has_flag(argv, cli_config.inference_flags)
 	reset_cache = utils.has_flag(argv, cli_config.reset_flags)
 	show_info_message = utils.has_flag(argv, cli_config.help_flags)
 
