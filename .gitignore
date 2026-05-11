@@ -222,8 +222,8 @@ __marimo__/
 # Assignment specific
 ../dataset/
 #../model/
-*.pt
-*.pth
+#*.pt
+#*.pth
 runs/
 output/
 __pycache__/
