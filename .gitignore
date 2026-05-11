@@ -51,7 +51,7 @@ coverage.xml
 
 # Project-specific directories (large files and generated outputs)
 dataset/
-model/
+#model/
 output/
 runs/
 .env
@@ -218,10 +218,10 @@ __marimo__/
 .idea/
 /dataset/
 /output/
-/model/
+#/model/
 # Assignment specific
 ../dataset/
-../model/
+#../model/
 *.pt
 *.pth
 runs/
