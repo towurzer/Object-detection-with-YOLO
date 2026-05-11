@@ -3,28 +3,26 @@ from config import Config, CLIConfig
 import utils
 import dataset
 import inference
+from model import train_model
 
 
 def main(pre_training_inference, perform_training, post_training_inference, evaluate_results):
 	print("Starting ...")
 	config = Config()  # Load Configuration
-	utils.create_dir(config)  # create directories to store dataset as well as the scatter plots and clustering
+	utils.create_dir(config)  # Create necessary directories if they don't exist
 	print("Loaded config, created directories")
 
 	if pre_training_inference or perform_training or post_training_inference:
-		dataloader = dataset.get_dataloader(config)  # download the dataset, crate and return the dataloader
+		dataloader = dataset.get_dataloader(config)  # download the dataset, create and return dataloader (path to data.yaml) 
 
 	if pre_training_inference:
-    		inference.run_pretrained_inference(config)
+		inference.run_pretrained_inference(config)
 
 	if perform_training:
-		# TODO: Train model
-		pass
+		train_model(config, dataloader)
 
 	if post_training_inference:
-		# TODO: Run Inference again on cached model
-		# TODO: If no trained model found, throw an error with a describing message
-		pass
+		inference.run_post_training_inference(config)
 
 	if evaluate_results:
 		# TODO: Evaluate

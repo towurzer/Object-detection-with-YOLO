@@ -6,7 +6,7 @@ load_dotenv()
 
 def download_dataset(config):
     """
-    Automatically downloads the Bee Object dataset from Roboflow
+    Automatically downloads the configured dataset from Roboflow
     if it does not already exist locally.
     """
     # Skip download if dataset already exists
@@ -14,9 +14,9 @@ def download_dataset(config):
         print("Dataset found, downloading skipped.")
         return
 
-    print("Downloading Bee Object dataset from Roboflow...")
+    print("Downloading dataset from Roboflow...")
 
-    # API key is read from environment variable - never hardcode it!
+    # API key is read from environment variable
     api_key = os.environ.get("ROBOFLOW_API_KEY")
     if not api_key:
         raise EnvironmentError(
@@ -27,9 +27,10 @@ def download_dataset(config):
             )
 
     rf = Roboflow(api_key=api_key)
-    project = rf.workspace("marketahranickova-seznam-cz").project("bee-object-vojzu")
-    version = project.version(1)
+    project = rf.workspace(config.ROBOFLOW_WORKSPACE).project(config.ROBOFLOW_PROJECT)
+    version = project.version(config.ROBOFLOW_VERSION)
     version.download("yolov8", location=config.DATA_DIR, overwrite=True)
+
 
     print(f"Dataset downloaded to: {config.DATA_DIR}")
 
