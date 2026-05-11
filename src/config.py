@@ -40,5 +40,27 @@ class CLIConfig:
     reset_flags: List[str] = field(default_factory=lambda: ["-r", "--reset"])
     help_flags: List[str] = field(default_factory=lambda: ["-h", "--help"])
 
-    help_string = ""
+    help_string = """
+Usage:
+  python main.py [OPTIONS]
+
+Description:
+  Run the full ML pipeline, including optional inference, training, and evaluation steps.
+  If a step is not explicitly requested via flags, the pipeline will attempt to use cached artifacts \
+(e.g., trained models, inference outputs). If required artifacts are not found, the program will exit with an error.
+
+Options:
+-i, --inference					Run inference (applies to both pre- and post-training)
+--pre-training-inference		Run inference before training
+--post-training-inference		Run inference after training
+-t, --train						Run the training
+-e, --evaluate					Evaluate the results
+-r, --reset						Reset all caches (delete cached models, inference outputs, dataset, etc.) and exit
+-h, --help						Show this help message and exit
+
+Examples:
+  Run training only: 'python main.py --train'   
+  Run only evaluation: 'python main.py --evaluate'
+  Run full pipeline: 'python main.py -i -t -e'
+"""
 

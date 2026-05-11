@@ -7,7 +7,7 @@ def run_pretrained_inference(config):
     Step 3: Run inference with pretrained model.
     """
 
-    model = load_pretrained_model(config.MODEL_NAME)
+    model = load_pretrained_model(config)
 
     image_dir = os.path.join(config.DATA_DIR, "test", "images")
 

@@ -218,6 +218,7 @@ __marimo__/
 .idea/
 /dataset/
 /output/
+<<<<<<< HEAD
 #/model/
 # Assignment specific
 ../dataset/
@@ -227,3 +228,8 @@ __marimo__/
 runs/
 output/
 __pycache__/
+=======
+../dataset/
+../model/
+/model/pre-trained/
+>>>>>>> 8b1413925a239a3dc8bda34b96196aae5bc86ae5
