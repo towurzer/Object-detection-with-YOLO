@@ -18,7 +18,7 @@ def load_trained_model(config):
     return YOLO(trained_model_path)
 
 
-def train_model(config, data_yaml: str):
+def train_model(config, data_yaml):
     """Train the configured pretrained model on the given dataset."""
     model = load_pretrained_model(config)
 

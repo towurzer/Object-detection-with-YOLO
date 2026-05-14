@@ -10,7 +10,7 @@ def download_dataset(config):
     if it does not already exist locally.
     """
     # Skip download if dataset already exists
-    if os.path.exists(os.path.join(config.DATA_DIR, "data.yaml")):
+    if os.path.exists(os.path.join(config.DATA_DIR, config.DATASET_YAML)):
         print("Dataset found, downloading skipped.")
         return
 
@@ -21,7 +21,7 @@ def download_dataset(config):
     if not api_key:
         raise EnvironmentError(
             "ROBOFLOW_API_KEY environment variable not set.\n"
-            "Get your free API key at: https://app.roboflow.com/settings/api\n"
+            "Get your API key at: https://app.roboflow.com/settings/api\n"
             "Linux/macOS current session: export ROBOFLOW_API_KEY='your_key_here'\n"
             "Windows PowerShell current session: $env:ROBOFLOW_API_KEY='your_key_here'\n"
             )
@@ -44,12 +44,12 @@ def get_dataloader(config):
     download_dataset(config)
 
     # Build path to data.yaml
-    data_yaml = os.path.join(config.DATA_DIR, "data.yaml")
+    data_yaml = os.path.join(config.DATA_DIR, config.DATASET_YAML)
 
     # Check that data.yaml exists
     if not os.path.exists(data_yaml):
         raise FileNotFoundError(
-            f"data.yaml not found in '{config.DATA_DIR}'\n"
+            f"{config.DATASET_YAML} not found in '{config.DATA_DIR}'\n"
             f"Make sure the dataset is in YOLOv8 format."
         )
 

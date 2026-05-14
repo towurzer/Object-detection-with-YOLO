@@ -1,3 +1,4 @@
+import json
 import os
 import pickle
 import shutil
@@ -11,6 +12,7 @@ def create_dir(config):
 	os.makedirs(config.DATA_DIR, exist_ok=True)
 	os.makedirs(config.OUT_DIR, exist_ok=True)
 	os.makedirs(config.MODEL_DIR, exist_ok=True)
+	os.makedirs(os.path.join(config.OUT_DIR, "evaluation"), exist_ok=True)
 
 def clear_dirs(config):
     """
@@ -28,31 +30,9 @@ def clear_dirs(config):
 def saveResults(directory, filename, results):
 	save_path = os.path.join(directory, filename)
 
-	# Save data in binary mode to preserve NumPy array structures
-	with open(save_path, 'wb') as f:
-		pickle.dump(results, f)
-
-	print(f"Success! Saved {len(results)} items to {save_path}")
-
-
-def loeadResults(directory, filename) -> list[dict] | None:
-	"""
-	Loads previously saved feature extraction results from disk.
-	:arg TODO
-	:return data: The loaded results if the file exists, otherwise None.
-	"""
-
-	path = os.path.join(directory, filename)
-
-	# Check for file existence to prevent FileNotFoundError
-	if os.path.exists(path):
-		with open(path, 'rb') as f:
-			data = pickle.load(f)
-		print(f"Results successfully loaded from {path}")
-		return data
-	print("No results found")
-	return None
-
+	with open(save_path, "w", encoding="utf-8") as f:
+		f.write(results)
+	print(f"Saved eval results items to {save_path}")
 
 def gracefulExit():
 	"""Wait for all pots to be closed before exiting"""

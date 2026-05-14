@@ -1,9 +1,12 @@
+import os.path
 import sys
 from config import Config, CLIConfig
 import utils
 import dataset
 import inference
 from model import train_model
+import evaluation
+import visualizations
 
 
 def main(pre_training_inference, perform_training, post_training_inference, evaluate_results):
@@ -13,21 +16,22 @@ def main(pre_training_inference, perform_training, post_training_inference, eval
 	print("Loaded config, created directories")
 
 	if pre_training_inference or perform_training or post_training_inference:
-		dataloader = dataset.get_dataloader(config)  # download the dataset, create and return dataloader (path to data.yaml) 
+		data_yaml = dataset.get_dataloader(config)  # download the dataset, create and return dataloader (path to data.yaml)
 
 	if pre_training_inference:
 		inference.run_pretrained_inference(config)
 
 	if perform_training:
-		train_model(config, dataloader)
+		train_model(config, data_yaml)
 
 	if post_training_inference:
 		inference.run_post_training_inference(config)
 
 	if evaluate_results:
-		# TODO: Evaluate
-		# TODO: If no pre and post training inference results found, throw an error with a describing message
-		pass
+		results = evaluation.evaluate(config)
+		print("\n\n\n")
+		utils.saveResults(os.path.join(Config.OUT_DIR, "evaluation"), "evaluation_results.json", results)
+		visualizations.plot_results_from_json(os.path.join(Config.OUT_DIR, "evaluation"), "evaluation_results.json")
 
 
 if __name__ == '__main__':

@@ -27,6 +27,7 @@ class Config:
     DATA_DIR: str = str(PROJECT_ROOT / "dataset")
     MODEL_DIR: str = str(PROJECT_ROOT / "model")
     OUT_DIR: str = str(PROJECT_ROOT / "output")
+    DATASET_YAML: str = "data.yaml"
     DATA_FILE: str = "inference.data"
 
 
