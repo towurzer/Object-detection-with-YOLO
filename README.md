@@ -87,7 +87,7 @@ The exact Evaluation Results can be found in /output/evalutaion/evaluation_resul
 ![Overall Performance](results/comparison/overall_performance.png)
 
 ### Per-Class Performance
-The fine-tuned model achieved high accuracy across most categories. The "Normal" class reached a near-perfect mAP50 of 0.97, demonstrating the model's reliability in identifying functional solar panels. The "Cover" class proved to be the most challenging category, which can be attributed to its visual similarity to shadows, varying environmental lighting conditions, and dust accumulation.
+The fine-tuned model achieved high accuracy across most categories. Where the "Normal" class reached a near-perfect mAP50 of 0.97.
 
 ![Per Class Performance](results/comparison/per_class_performance.png)
 
@@ -95,7 +95,7 @@ The fine-tuned model achieved high accuracy across most categories. The "Normal"
 While the pre-trained baseline model was unable to effectively interpret solar panel imagery, the fine-tuned model successfully learned to identify and localize specific defects. Below are key comparisons between the pre-trained baseline and the fine-tuned results.
 
 #### Comparison 1: Detection Sensitivity
-In this instance, the pre-trained baseline failed to provide any detections. Following the fine-tuning process, the model is able to accurately identify multiple distinct defects on the panel.
+In this instance, the pre-trained baseline failed to provide any detections. Following the fine-tuning process, the model is able to identify multiple distinct defects on the panel, even though the categories are still wrong. But this could most likely be solved by increasing the model training.
 
 * **Baseline (No detection):** 
 
@@ -115,7 +115,7 @@ The pre-trained model misidentified the solar panel as a "bed." The fine-tuned m
 ![4-post](results/comparison/4-post.jpg)
 
 #### Comparison 3: Localization and Background Noise
-The baseline model incorrectly identified a "chair" in the background rather than focusing on the panel. The fine-tuned model correctly ignores the background noise and identifies the crack in the solar panel.
+The baseline model incorrectly identified a "chair" in the background rather than focusing on the panel. The fine-tuned model correctly ignores the background noise and identifies the cracks in the solar panel.
 
 * **Baseline (Misclassified chair):** 
 
