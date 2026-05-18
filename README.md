@@ -34,9 +34,7 @@ This project downloads datasets from Roboflow. You need to set up the `ROBOFLOW_
 $env:ROBOFLOW_API_KEY="your_key_here"
 ```
 
-Then restart your terminal.
-
-**Linux/macOS:**
+**Linux/macOS (current session only):**
 ```bash
 export ROBOFLOW_API_KEY='your_key_here'
 ```
